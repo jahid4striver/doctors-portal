@@ -5,7 +5,7 @@ import bg from '../../assets/images/bg.png'
 const Banner = () => {
     return (
         <div className='w-100 h-100 bg-cover bg-center' style={{backgroundImage:`url(${bg})`}}>
-            <div className="hero min-h-screen px-12">
+            <div className="hero min-h-screen">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <img src={chair} className="max-w-sm rounded-lg shadow-2xl"/>
                 <div>
