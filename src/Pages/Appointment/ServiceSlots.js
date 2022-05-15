@@ -1,7 +1,7 @@
 import { sl } from 'date-fns/locale';
 import React from 'react';
 
-const ServiceSlots = ({ service }) => {
+const ServiceSlots = ({ service, setTreatment }) => {
     const { name, slots } = service;
     return (
         <div class="card lg:max-w-lg bg-base-100 shadow-xl text-center">
@@ -9,11 +9,12 @@ const ServiceSlots = ({ service }) => {
                 <h2 class="card-title text-secondary mx-auto">{name}</h2>
                 <p>
                     {
-                        slots.length ? slots[0] : 'No Slots Available'
+                        slots.length ? slots[0] : <span className='text-red-400'>Try Another Date</span>
                     }
                 </p>
+                <p>{slots.length} {slots.length<=1 ? 'Space': 'Spaces'} Available</p>
                 <div class="card-actions">
-                    <button disabled={slots.length<1} class="btn btn-secondary uppercase text-white mx-auto">Book Appointment</button>
+                <label onClick={()=> setTreatment(service)} disabled={slots.length<1} for="booking-modal" class="btn btn-secondary uppercase text-white mx-auto">Book Appointment</label>
                 </div>
             </div>
         </div>
