@@ -26,7 +26,7 @@ const Services = () => {
         },
     ]
     return (
-        <div>
+        <div className='px-12'>
             <div className='my-24 text-center'>
                 <h3 className='text-primary font-bold uppercase text-xl'>Our Services</h3>
                 <h2 className='text-3xl'>Service We Provide</h2>
