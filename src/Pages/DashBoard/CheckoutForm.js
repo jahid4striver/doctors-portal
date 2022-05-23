@@ -10,10 +10,10 @@ const CheckoutForm = ({ booking }) => {
     const [proccessing, setProccessing] = useState(false);
     const [payid, setPayid] = useState('');
 
-    const { _id, price, email, patientName } = booking;
+    const {_id, price, email, patientName } = booking;
 
     useEffect(() => {
-        fetch('http://localhost:5000/create-payment-intent', {
+        fetch('https://doctors-portal-365.herokuapp.com/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -78,26 +78,26 @@ const CheckoutForm = ({ booking }) => {
             console.log(paymentIntent);
             setSuccess('Congrats !, Your Payment is Successful')
 
-            // crete payment object for database
-            const payment = {
+// crete payment object for database
+            const payment={
                 booking: _id,
                 transactionId: paymentIntent.id
             }
 
-            fetch(`https://doctors-portal-365.herokuapp.com/${_id}`, {
-                method: 'PATCH',
+            fetch(`https://doctors-portal-365.herokuapp.com/booking/${_id}`,{
+                method:'PATCH',
                 headers: {
                     'content-type': 'application/json',
                     'authorization': `bearer ${localStorage.getItem('accessToken')}`
                 },
                 body: JSON.stringify(payment)
             })
-                .then(res => res.json())
-                .then(data => {
-                    setProccessing(false);
-                    console.log(data);
+            .then(res=>res.json())
+            .then(data=>{
+                setProccessing(false);
+                console.log(data);
 
-                })
+            })
         }
     }
     return (

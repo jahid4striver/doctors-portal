@@ -7,7 +7,7 @@ import Doctor from './Doctor';
 const ManageDoctors = () => {
     const [deleteModal, setDeleteModal]=useState(null);
 
-    const {data: doctors, isLoading, refetch}= useQuery('doctors', ()=> fetch('http://localhost:5000/doctors',{
+    const {data: doctors, isLoading, refetch}= useQuery('doctors', ()=> fetch('https://doctors-portal-365.herokuapp.com/doctors',{
         headers:{
             'authorization':`bearer ${localStorage.getItem('accessToken')}`
         }

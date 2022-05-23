@@ -5,7 +5,7 @@ const DeleteModal = ({ deleteModal, refetch,setDeleteModal }) => {
     const {name, email}=deleteModal;
 
     const handleDelete= (email)=>{
-        const url=`http://localhost:5000/doctors/${email}`
+        const url=`https://doctors-portal-365.herokuapp.com/doctors/${email}`
         fetch(url, {
             method: 'DELETE',
             headers:{

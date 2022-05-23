@@ -7,7 +7,7 @@ import Loading from '../Shared/Loading';
 const AddDoctor = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
-    const { data: services, isLoading } = useQuery('services', () => fetch('http://localhost:5000/services').then(res => res.json()));
+    const { data: services, isLoading } = useQuery('services', () => fetch('https://doctors-portal-365.herokuapp.com/services').then(res => res.json()));
 
 if(isLoading){
     return <Loading></Loading>
@@ -46,7 +46,7 @@ const imageApiKey='73788e34c0735f097d12ee5f939e4838';
                     image: img
                 }
             // send to your database
-            fetch('http://localhost:5000/doctors', {
+            fetch('https://doctors-portal-365.herokuapp.com/doctors', {
                 method:'POST',
                 headers:{
                     'content-type': 'application/json',
